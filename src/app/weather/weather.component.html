@@ -1,0 +1,60 @@
+<!-- <mat-toolbar color="primary" > <span >Open Weather Map</span> </mat-toolbar>
+ -->
+
+<div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" style="margin-left:10%; ">
+<div class=".mat-headline" id="header"><h1>Maxi Weather</h1></div>
+
+   <ng-container  *ngFor="let search of searchs; let i = index">
+      <div  fxFlex="0 1 auto" >
+         <div class="container" id = "grid">
+            <div fxLayout="row">
+               <div fxFlex></div>
+               <mat-card id="changeGrid" fxFlex="300px">
+                  <mat-card-header>
+                     <mat-card-title>
+                        <div class="mat-headline">Weather</div>
+                        <form class="example-form" style="margin-bottom: 32px" (ngSubmit)="onSubmit(i)">
+                          <mat-icon *ngIf="!show[i]" matPrefix style="margin:4px; font-size: 20px; ">search</mat-icon>
+                           <mat-form-field>
+                              <input matInput placeholder="Enter city" value="" [formControl]="search" aria-required="true" [attr.disabled] = "show[i] ? '' : null"  />
+                              <mat-error *ngIf="search.invalid"> Type more than one character to search </mat-error>
+                           </mat-form-field>
+                          <mat-icon style ="margin:4px; font-size: 20px; cursor: pointer;"  matTooltip="Info about the action" (click)="onSubmit(i)" *ngIf="show[i]">edit</mat-icon>
+
+                        </form>
+                     </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                     <div *ngIf="show[i]">
+                        <div class="container" *ngIf="errorMsg[i]; else elseblock">
+                           <h3>{{errorMsg[i]}}</h3>
+                        </div>
+                        <ng-template #elseblock>
+                           <div fxLayout="row">
+                              <div fxFlex="66%" class="mat-title no-margin">
+
+                                 {{ weathers[i].get("city") }}, {{ weathers[i].get("country") }}
+                              </div>
+                           </div>
+                           <div fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: -48px;">
+                            <div fxFlex="55%">
+                                <img style="zoom: 175%; margin-bottom: 32px;" [src]="weathers[i].get('image')" />
+                              </div>
+                              <div fxFlex class="right no-margin">
+                                 <p class="mat-display-1">
+                                    {{ weathers[i].get("temp") | number: '1.0-0' }}
+                                    <span class="mat-display-1 unit">&#8451;</span>
+                                 </p>
+                              </div>
+                           </div>
+                           <div fxLayoutAlign="center " style = "font-weight: 200;" class=".mat-body-strong"><strong>{{ weathers[i].get("main") }}</strong></div>
+                        </ng-template>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+               <div fxFlex></div>
+            </div>
+         </div>
+      </div>
+   </ng-container>
+</div>

@@ -1,0 +1,23 @@
+
+  [
+    {
+      "Name": "cricket",
+      "imgUrl": "some url",
+      "list1": {
+        "bat": {
+          "Name": "bat",
+          "imgUrl": "some url",
+          "price": "$100"
+        },
+        "pads": {
+          "displayName": "pads",
+          "imgUrl": "some url",
+          "price": "$50"
+        }
+      }
+    },
+    {
+      "Name": "football",
+      "imgUrl": "some url"
+    }
+  ]
