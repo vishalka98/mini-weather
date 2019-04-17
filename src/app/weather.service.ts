@@ -38,7 +38,7 @@ export class WeatherService {
 
   getWeathers(city){
   //  link=;   console.log(city)
-    return this.http.get("http://api.openweathermap.org/data/2.5/weather?q="+city+","+this.country+"&appid="+this.apikey)
+    return this.http.get("https://api.openweathermap.org/data/2.5/weather?q="+city+","+this.country+"&appid="+this.apikey)
                .catch(this.errorHandler);
   }
   errorHandler(error:HttpErrorResponse){
