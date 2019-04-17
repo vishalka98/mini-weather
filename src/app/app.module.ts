@@ -10,7 +10,7 @@ import {HttpClientModule}  from '@angular/common/http';
 import { MaterialModule } from './material.module'
 import { NgModule } from '@angular/core';
 import { TestComponent } from './test/test.component';
-import { WeatherComponent } from './Weather/weather.component';
+import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './weather.service';
 
 @NgModule({
